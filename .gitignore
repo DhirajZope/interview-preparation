@@ -55,3 +55,7 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Personal Files
+closest_to_zero.py
+prefered_row.py

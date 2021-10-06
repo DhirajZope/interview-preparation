@@ -26,6 +26,11 @@ def swapp(n1, n2):
     n1 = n1 ^ n2
     print(n1, n2)
 
+# Solution 5
+def swapTwo(n1, n2):
+    n1, n2 = n2, n1
+    print(n1, n2)
+
 # swap(2, 3)
 # swap_two(6, 4)
 # swapping(2, 3)

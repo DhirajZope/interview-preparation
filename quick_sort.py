@@ -2,16 +2,33 @@ def partition(arr, low, high):
     pivot = arr[low]
     i = low + 1
     j = high
+    # print(f"Low {low}")
+    # print(f"High {high}")
 
-    for k in range(low, high):
+    while i < j:
+        # print(arr)
+        # print("Pivot", pivot)
+        # print("i ",i)
+        # print("j ", j)
         while arr[i] <= pivot:
             i += 1
+            # print("Under i", i)
         while arr[j] > pivot:
             j -= 1
+            # print("Under j", j)
+
         if i < j:
-            arr[i], arr[j] = arr[j], arr[i]
-    arr[low], arr[j] = arr[j], arr[low]
+            temp = arr[i]
+            arr[i] = arr[j]
+            arr[j] = temp
+
+    temp = arr[low]
+    arr[low] = arr[j]
+    arr[j] = temp
+    # print("Final", arr)
     return j
+    
+
 
 def quickSort(arr, low, high):
     if low < high:
@@ -19,8 +36,10 @@ def quickSort(arr, low, high):
         quickSort(arr, low, partitionIndex-1)
         quickSort(arr, partitionIndex+1, high)
 
+
 if __name__ == '__main__':
-    arr = [21,2,36,12,2,38,95,1]
-    high = len(arr)-1
-    quickSort(arr, 0, high)
+    # arr = [3, 5, 2, 13, 12]
+    arr = [25, 12, 1, 36, 5, 89, 21, 12]
+    n = len(arr)
+    quickSort(arr, 0, n-1)
     print(arr)

@@ -3,10 +3,12 @@ class Node:
         self.data = data
         self.next = None
 
-
 class LinkedList:
     def __init__(self):
         self.__head = None
+
+    def __iter__(self):
+        return LinkedListIterator(self.__head)
 
     def iter(self):
         if self.__head is None:
@@ -127,6 +129,21 @@ class LinkedList:
             currentIndex += 1
         n.data = data
 
+class LinkedListIterator:
+    def __init__(self, head):
+        self.current = head
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if not self.current:
+            raise StopIteration
+        else:
+            item = self.current.data
+            self.current = self.current.next
+            return item
+
 
 List = LinkedList()
 List.add_begin(10)
@@ -143,9 +160,12 @@ List.insertAt(5, 2)
 
 # print(List.len())
 # print(List.pop())
-List.iter()
+# List.iter()
 # List.deleteAt(2)
 # List.pop2()
-print()
-List.update(2, 60)
-List.iter()
+# print()
+# List.update(2, 60)
+# List.iter()
+
+for i in List:
+    print(i)

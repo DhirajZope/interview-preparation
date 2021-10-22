@@ -7,8 +7,15 @@ class LinkedList:
     def __init__(self):
         self.__head = None
 
+    # def __iter__(self):
+    #     return LinkedListIterator(self.__head)
+
     def __iter__(self):
-        return LinkedListIterator(self.__head)
+        current = self.__head
+
+        while current:
+            yield current.data
+            current = current.next
 
     def iter(self):
         if self.__head is None:
@@ -129,20 +136,20 @@ class LinkedList:
             currentIndex += 1
         n.data = data
 
-class LinkedListIterator:
-    def __init__(self, head):
-        self.current = head
+# class LinkedListIterator:
+#     def __init__(self, head):
+#         self.current = head
 
-    def __iter__(self):
-        return self
+#     def __iter__(self):
+#         return self
 
-    def __next__(self):
-        if not self.current:
-            raise StopIteration
-        else:
-            item = self.current.data
-            self.current = self.current.next
-            return item
+#     def __next__(self):
+#         if not self.current:
+#             raise StopIteration
+#         else:
+#             item = self.current.data
+#             self.current = self.current.next
+#             return item
 
 
 List = LinkedList()
@@ -167,5 +174,8 @@ List.insertAt(5, 2)
 # List.update(2, 60)
 # List.iter()
 
-for i in List:
-    print(i)
+# for i in List._iter_():
+#     print(i)
+
+for num in List:
+    print(num)
